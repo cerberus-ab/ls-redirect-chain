@@ -12,14 +12,14 @@ $ node lsrech.js URL
 will list http/https redirect chain for your URL.
 
 ### Examples
-Single 301 redirect on https site main page:
+Single 301 redirect on HTTPS website main page:
 ```
 $ node lsrech.js https://apple.com
 1       301     https://apple.com
         200     https://www.apple.com/
 ```
 
-Redirect chain by some http url:
+Redirect chain by some HTTP URL:
 ```
 $ node lsrech.js http://3.ly/DNMd
 1       301     http://3.ly/DNMd
