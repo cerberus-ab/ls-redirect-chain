@@ -11,5 +11,29 @@ $ node lsrech.js URL
 ```
 will list http/https redirect chain for your URL.
 
+### Examples
+Single 301 redirect on https site main page:
+```
+$ node lsrech.js https://apple.com
+1       301     https://apple.com
+        200     https://www.apple.com/
+```
+
+Redirect chain by some http url:
+```
+$ node lsrech.js http://3.ly/DNMd
+1       301     http://3.ly/DNMd
+2       302     http://www.3.ly/DNMd
+        200     http://www.3.ly/
+```
+
+Redirect chain is too long (max value has been set to 1):
+```
+$ node lsrech.js http://3.ly/DNMd
+1       301     http://3.ly/DNMd
+        302     http://www.3.ly/DNMd
+Redirect chain is too long (2 redirects)
+```
+
 ### See also
 [Get mixed content](https://github.com/cerberus-ab/get-mixed-content)
