@@ -10,3 +10,6 @@ Be sure you have nodejs `>=6.0.0`, and then:
 $ node lsrech.js URL
 ```
 will list http/https redirect chain for your URL.
+
+### See also
+[Get mixed content](https://github.com/cerberus-ab/get-mixed-content)
