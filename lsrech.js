@@ -7,6 +7,7 @@ const print = msg => process.stdout.write(msg.toString());
 
 // common client singleton
 const client = {
+    // send request using native clients
     request: (pageUrl, opts) => {
         return new Promise((resolve, reject) => {
             // prepare options for sent request
@@ -18,7 +19,9 @@ const client = {
                 .end()
             ;
         });
-    }
+    },
+    // resolve a target url relative to a base url
+    resolveUrl: (from, to) => url.resolve(from, to)
 };
 
 // Redirect chain wanderer class
@@ -55,7 +58,7 @@ class RedirectChainWanderer {
                                 resolve(that.Result(path, `Redirect chain is too long (${i} redirects)`));
                             }
                             // TODO: also check for redirect loop
-                            else next(res.headers.location);
+                            else next(client.resolveUrl(pageUrl, res.headers.location));
                         }
                         else resolve(that.Result(path, `Response does not have location header`));
                     }
