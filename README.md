@@ -19,19 +19,27 @@ $ node lsrech.js https://apple.com
         200     https://www.apple.com/
 ```
 
-Redirect chain by some HTTP URL:
+Redirect chain by some HTTP to HTTPS URL:
 ```
-$ node lsrech.js http://3.ly/DNMd
-1       301     http://3.ly/DNMd
-2       302     http://www.3.ly/DNMd
-        200     http://www.3.ly/
+$ node lsrech.js http://addvisits.com/
+1       301     http://addvisits.com/
+2       301     http://www.addvisits.com/
+        200     https://www.addvisits.com/
+```
+
+Redirect chain with relative URLs in location:
+```
+$ node lsrech.js http://evaxtampax.es/
+1       301     http://evaxtampax.es/
+2       301     http://www.evaxtampax.es//
+        200     http://www.evaxtampax.es/es-es
 ```
 
 Redirect chain is too long (max value has been set to 1):
 ```
-$ node lsrech.js http://3.ly/DNMd
-1       301     http://3.ly/DNMd
-        302     http://www.3.ly/DNMd
+$ node lsrech.js http://evaxtampax.es/
+1       301     http://evaxtampax.es/
+        301     http://www.evaxtampax.es//
 Redirect chain is too long (2 redirects)
 ```
 
