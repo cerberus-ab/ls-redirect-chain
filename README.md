@@ -2,14 +2,14 @@
 Simple nodejs script for testing some URL for HTTP/HTTPS redirect chain.
 
 ### About
-The script uses native http/https nodejs clients in depends on location protocol and lists redirect chain. By default sends HEAD request and passes no more than 10 redirects (301, 302); does not pass javascript redirects. Be careful, this is not a production-ready code.. just for fun.
+The script uses native HTTP/HTTPS nodejs clients in depends on location protocol and lists redirect chain. By default sends HEAD request and passes no more than 10 redirects (301, 302); does not pass javascript redirects. Be careful, this is not a production-ready code.. just for fun.
 
 ### Instruction
 Be sure you have nodejs `>=6.0.0`, and then:
 ```
 $ node lsrech.js URL
 ```
-will list http/https redirect chain for your URL.
+will list HTTP/HTTPS redirect chain for your URL.
 
 ### Examples
 Single 301 redirect on HTTPS website main page:
