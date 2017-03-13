@@ -54,11 +54,18 @@ class RedirectChainWanderer {
                     // check status code for redirect
                     if (~that.options.statuses.indexOf(res.statusCode)) {
                         if (res.headers.location !== undefined) {
+                            // check max count
                             if (++i > that.options.max) {
                                 resolve(that.Result(path, `Redirect chain is too long (${i} redirects)`));
                             }
-                            // TODO: also check for redirect loop
-                            else next(client.resolveUrl(pageUrl, res.headers.location));
+                            else {
+                                let nextUrl = client.resolveUrl(pageUrl, res.headers.location);
+                                // check for a redirect loop
+                                if (~path.indexOf(nextUrl)) {
+                                    resolve(that.Result(path, `It seems there is a redirect loop`));
+                                }
+                                else next(nextUrl);
+                            }
                         }
                         else resolve(that.Result(path, `Response does not have location header`));
                     }
